@@ -142,7 +142,7 @@ def write_daily_performance_to_file(daily_cash_stock):
 
 
 def main():
-    for day in range(1, 24):
+    for day in range(1, 12):
         stock_data = get_stock_data(FILE_DIR + str(day).zfill(2) + FILE_NAME)
         if day == 1:
             buy(day, stock_data)
