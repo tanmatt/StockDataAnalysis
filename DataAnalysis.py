@@ -71,7 +71,7 @@ def sell(day, stock_data_dict):
     global virtualStockValue
     sold_stocks = {}
 
-    print "\n\nStarting selling for day:", day
+    print("\n\nStarting selling for day:", day)
 
     # if the stock in portfolio is not rank_1 stock this day,
     # then sell it
@@ -97,21 +97,21 @@ def sell(day, stock_data_dict):
         dict_shares_count.pop(stock)
 
     dict_daily_cash_stock[day] = [virtualCash, virtualStockValue]
-    print "Ending selling for day:", day
-    print "Day {}, virtualCash {}, virtualStockValue {}, totalPortfolio {}"\
-        .format(day, virtualCash, virtualStockValue, virtualCash + virtualStockValue)
+    print("Ending selling for day:", day)
+    print("Day {}, virtualCash {}, virtualStockValue {}, totalPortfolio {}"\
+        .format(day, virtualCash, virtualStockValue, virtualCash + virtualStockValue))
 
 
 def buy(day, stock_data_dict):
     global virtualCash
     global virtualStockValue
 
-    print "\n\nStarting buying for day:", day
+    print("\n\nStarting buying for day:", day)
     for stock in stock_data_dict:
 
         # if enough cash, buy, else print and break
         if virtualCash < stock_data_dict[stock]:
-            print "Not enough cash. Breaking...."
+            print("Not enough cash. Breaking....")
             break
 
         # case-1: New stock
@@ -126,9 +126,9 @@ def buy(day, stock_data_dict):
         virtualStockValue += stock_data_dict[stock]
 
     dict_daily_cash_stock[day] = [virtualCash, virtualStockValue]
-    print "Ending buying for day:", day
-    print "Day {}, virtualCash {}, virtualStockValue {}, totalPortfolio {}".format(day, virtualCash, virtualStockValue,
-                                                                                   virtualCash + virtualStockValue)
+    print("Ending buying for day:", day)
+    print("Day {}, virtualCash {}, virtualStockValue {}, totalPortfolio {}".format(day, virtualCash, virtualStockValue,
+                                                                                   virtualCash + virtualStockValue))
 
 
 def write_daily_performance_to_file(daily_cash_stock):
@@ -150,10 +150,10 @@ def main():
             sell(day, stock_data)
             buy(day, stock_data)
 
-        print "\n\n\nTrade analysis:\n\n"
-        print "Day: virtualCash, virtualPortfolio\n", dict_daily_cash_stock
-        print "Stock: shares\n", dict_shares_count
-        print "Total gains\n", total_gains
+        print("\n\n\nTrade analysis:\n\n")
+        print("Day: virtualCash, virtualPortfolio\n", dict_daily_cash_stock)
+        print("Stock: shares\n", dict_shares_count)
+        print("Total gains\n", total_gains)
         write_daily_performance_to_file(dict_daily_cash_stock)
 
 
